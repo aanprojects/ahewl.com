@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/','HomePage@indexPage');
+Route::get('/about','HomePage@aboutPage');
+Route::get('/works','HomePage@worksPage');
+
+//
+
+Route::get('/adminHome','adminPage@adminArea');
+Route::get('/adminWorks','adminPage@adminWorks');
+
+Route::post('/addOwnerInfo','adminPage@addOwnerInfo');
+Route::get('/deleteOwnerInfo/{id}','adminPage@deleteOwnerInfo');
+
+Route::post('/addCompanyInfo','adminPage@addCompanyProfile');
+Route::get('/deleteCompanyInfo/{id}','adminPage@deleteCompanyInfo');
+
+

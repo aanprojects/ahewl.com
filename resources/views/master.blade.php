@@ -6,13 +6,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- CSS Include -->
-@include('inc.css');
-<!-- -->
 
+  <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Muli:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="{{URL::asset('fonts/icomoon/style.css') }}">
 
+  <link rel="stylesheet" href="{{URL::asset('/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{URL::asset('/css/jquery-ui.css') }}">
+  <link rel="stylesheet" href="{{URL::asset('css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{URL::asset('css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{URL::asset('css/owl.theme.default.min.css') }}">
 
-  
+  <link rel="stylesheet" href="{{URL::asset('css/jquery.fancybox.min.css') }}">
+
+  <link rel="stylesheet" href="{{URL::asset('css/bootstrap-datepicker.css') }}">
+
+  <link rel="stylesheet" href="{{URL::asset('fonts/flaticon/font/flaticon.css') }}">
+
+  <link rel="stylesheet" href="{{URL::asset('css/aos.css') }}">
+  <link href="css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="{{URL::asset('css/style.css') }}">
 
 
 
@@ -34,10 +47,57 @@
 
     
     <div class="header-top bg-light">
-  
-      <!-- CSS Include -->
-      @include('inc.header');
-        <!-- -->
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-6 col-lg-3">
+            <a href="index.html">
+              <img src="images/logo.png" alt="Image" class="img-fluid">
+            </a>
+          </div>
+          <div class="col-lg-4 d-none d-lg-block">
+
+            <div class="quick-contact-icons d-flex">
+              <div class="icon align-self-start">
+                <span class="flaticon-placeholder text-primary"></span>
+              </div>
+              <div class="text">
+                <span class="h4 d-block">{{ $headerQuery[0]->name}}</span>
+                <span class="caption-text">{{ $headerQuery[0]->address}}</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-3 d-none d-lg-block">
+            <div class="quick-contact-icons d-flex">
+              <div class="icon align-self-start">
+                <span class="flaticon-call text-primary"></span>
+              </div>
+              <div class="text">
+                <span class="h4 d-block">{{ $headerQuery[0]->cellno}}</span>
+                <span class="caption-text">Mobile</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 d-none d-lg-block">
+            <div class="quick-contact-icons d-flex">
+              <div class="icon align-self-start">
+                <span class="flaticon-email text-primary"></span>
+              </div>
+              <div class="text">
+                <span class="h4 d-block">{{ $headerQuery[0]->email}}</span>
+                <span class="caption-text">Chittagong</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 d-block d-lg-none text-right">
+              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                class="icon-menu h3"></span></a>
+          </div>
+        </div>
+      </div>
+      
 
 
       
@@ -47,10 +107,26 @@
         <div class="d-flex align-items-center">
           
           <div class="mr-auto">
-           
-             <!-- CSS Include -->
-              @include('inc.menu');
-             <!-- -->
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
+                <li class="active">
+                  <a href="/" class="nav-link text-left">Home</a>
+                </li>
+                <li>
+                  <a href="about.blade.php" class="nav-link text-left">About Us</a>
+                </li>
+                <li>
+                  <a href="works.blade.php" class="nav-link text-left">Our Projects</a>
+                </li>
+                <li>
+                    <a href="testimonials.blade.php" class="nav-link text-left">Testimonials</a>
+                </li>
+                <li><a href="blog.blade.phpml" class="nav-link text-left">Blog</a></li>
+                <li>
+                    <a href="contact.blade.php" class="nav-link text-left">Contact</a>
+                  </li>
+              </ul>                                                                                                                                                                                                                                                                                          </ul>
+            </nav>
 
           </div>
          
@@ -213,7 +289,7 @@
               <form action="#" class="quote-form">
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" placeholder="Your name*" required>
+                    <input type="text" class="form-control" placeholder="Your name*">
                   </div>
                   <div class="col-md-6 form-group">
                     <input type="text" class="form-control" placeholder="Phone number">
@@ -231,7 +307,7 @@
 
                 <div class="row">
                   <div class="col-md-6">
-                    <textarea name="" class="form-control" id="" placeholder="Message*" cols="30" rows="7" required></textarea>
+                    <textarea name="" class="form-control" id="" placeholder="Message*" cols="30" rows="7"></textarea>
                   </div>
                   <div class="col-md-6 align-self-end">
                     <input type="submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Send Message">
@@ -410,9 +486,56 @@
     </div>
 
     <div class="footer">
-      <!-- CSS Include -->
-        @include('inc.footer');
-      <!-- -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <p class="mb-4"><img src="images/logo2.png" alt="Image" class="img-fluid"></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>  
+            <p><a href="#">Learn More</a></p>
+          </div>
+          <div class="col-lg-3">
+            <h3 class="footer-heading"><span>Our Company</span></h3>
+            <ul class="list-unstyled">
+                <li><a href="#">About</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Projects</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Our Services</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="#">Industrial</a></li>
+                  <li><a href="#">Construction</a></li>
+                  <li><a href="#">Remodeling</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Contact</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">Support Community</a></li>
+                  <li><a href="#">Press</a></li>
+                  <li><a href="#">FAQ</a></li>
+                  <li><a href="#">Our Partners</a></li>
+              </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="copyright">
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     
 
@@ -422,10 +545,26 @@
 
   <!-- loader -->
   <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
-<!-- CSS Include -->
-@include('inc.js');
-<!-- -->
-  
+
+  <script src="{{URL::asset('js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{URL::asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script src="{{URL::asset('js/jquery-ui.js') }}"></script>
+  <script src="{{URL::asset('js/popper.min.js') }}"></script>
+  <script src="{{URL::asset('js/bootstrap.min.js') }}"></script>
+  <script src="{{URL::asset('js/owl.carousel.min.js') }}"></script>
+  <script src="{{URL::asset('js/jquery.stellar.min.js') }}"></script>
+  <script src="{{URL::asset('js/jquery.countdown.min.js') }}"></script>
+  <script src="{{URL::asset('js/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{URL::asset('js/jquery.easing.1.3.js') }}"></script>
+  <script src="{{URL::asset('js/aos.js') }}"></script>
+  <script src="{{URL::asset('js/jquery.fancybox.min.js') }}"></script>
+  <script src="{{URL::asset('js/jquery.sticky.js') }}"></script>
+  <script src="{{URL::asset('js/jquery.mb.YTPlayer.min.js') }}"></script>
+
+
+
+
+  <script src="{{URL::asset('js/main.js') }}"></script>
 
 </body>
 
