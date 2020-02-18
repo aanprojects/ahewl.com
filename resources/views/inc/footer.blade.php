@@ -8,20 +8,20 @@
           <div class="col-lg-3">
             <h3 class="footer-heading"><span>Our Company</span></h3>
             <ul class="list-unstyled">
-                <li><a href="#">About</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Projects</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/works">Projects</a></li>
+                <li><a href="/assets">Assets</a></li>
+                <li><a href="messages">Messages</a></li>
+                <li><a href="#">Career</a></li>
             </ul>
           </div>
           <div class="col-lg-3">
               <h3 class="footer-heading"><span>Our Services</span></h3>
               <ul class="list-unstyled">
-                  <li><a href="#">Industrial</a></li>
-                  <li><a href="#">Construction</a></li>
-                  <li><a href="#">Remodeling</a></li>
+                  <li><a href="/works">Industrial</a></li>
+                  <li><a href="/works">Steel Structure</a></li>
+                  <li><a href="/works">Re-engineering</a></li>
               </ul>
           </div>
           <div class="col-lg-3">
@@ -29,9 +29,7 @@
               <ul class="list-unstyled">
                   <li><a href="#">Help Center</a></li>
                   <li><a href="#">Support Community</a></li>
-                  <li><a href="#">Press</a></li>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Our Partners</a></li>
+                  <li><a href="/about">Our Partners</a></li>
               </ul>
           </div>
         </div>
@@ -41,7 +39,7 @@
             <div class="copyright">
                 <p>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Al Amin Hashemi Engineering Works Ltd. <i class=" text-danger" aria-hidden="true"></i> <a href="https://colorlib.com" target="_blank" ></a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
             </div>

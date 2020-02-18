@@ -8,8 +8,8 @@
         <div class="row align-items-center">
           <div class="col-6 col-lg-3">
             <a href="/">
-              <!-- <img src="images/logo.png" alt="Image" class="img-fluid">  -->
-                <h3 class="text-primary">Al Amin Hashemi Engineering Works LTD.</h3>
+              <img src="images/logo1.png" style="width:250px;" alt="Image" class="img-fluid"> 
+                <!-- <h3 class="text-primary">Al Amin Hashemi Engineering Works LTD.</h3> -->
             </a>
           </div>
           <div class="col-lg-4 d-none d-lg-block">

@@ -10,12 +10,6 @@
 @include('inc.css');
 <!-- -->
 
-
-
-  
-
-
-
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -49,7 +43,7 @@
           <div class="mr-auto">
            
              <!-- CSS Include -->
-              @include('inc.menu');
+              @include('inc.adminmenu');
              <!-- -->
 
           </div>
@@ -60,99 +54,102 @@
     </div>
     
     </div>
-    
-  <!--   <div class="hero-slide owl-carousel site-blocks-cover">
-      <div class="intro-section" style="background-image: url('images/hero_1.jpg');">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-              <h1>We Are <strong>Leading</strong> Industry of Engineers</h1>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="intro-section" style="background-image: url('images/hero_1.jpg');">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-              <span class="d-block"></span>
-              <h1>Experts and High Quality Works</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div> -->
-    <!-- END slider -->
     
 
     <div class="site-section services-1-wrap">
-     <!--  <div class="container">
-        <div class="row mb-5 justify-content-center text-center">
-          <div class="col-lg-5">
-              <h3 class="section-subtitle">What We Do</h3>
-              <h2 class="section-title mb-4 text-black">We Are <strong>Leading Industry</strong> of Engineering. We Love What We Do</h2>
-          </div>
-        </div>
-        
-      </div> -->
+    
     </div>
-    <!-- END services
+    <!-- END services -->
 
-   <!--  <div class="site-section">
-      <div class="block-2">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-              <img src="images/about_1.jpg" alt="Image " class="img-fluid img-overlap">
-            </div>
-            <div class="col-lg-5 ml-auto">
-              <h3 class="section-subtitle">Why Choose Us</h3>
-              <h2 class="section-title mb-4">More than <strong>50 year experience</strong> in industry</h2>
-              <p>Reprehenderit, odio laboriosam? Blanditiis quae ullam quasi illum minima nostrum perspiciatis error consequatur sit nulla.</p>
-
-              <div class="row my-5">
-                <div class="col-lg-12 d-flex align-items-center mb-4">
-                  <span class="line-height-0 flaticon-oil-platform display-4 mr-4 text-primary"></span>
-                  <div>
-                    <h4 class="m-0 h5 text-white">Expert in Builings</h4>
-                    <p class="text-white">Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="col-lg-12 d-flex align-items-center mb-4">
-                  <span class="line-height-0 flaticon-compass display-4 mr-4 text-primary"></span>
-                  <div>
-                    <h4 class="m-0 h5 text-white">Modern Design</h4>
-                    <p class="text-white">Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="col-lg-12 d-flex align-items-center">
-                  <span class="line-height-0 flaticon-planning display-4 mr-4 text-primary"></span>
-                  <div>
-                    <h4 class="m-0 h5 text-white">Leading In Floor Planning</h4>
-                    <p class="text-white">Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-
-
-
-              </div>
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>  -->
+   
     <!-- END block-2 -->
 
 
     <div class="">
       <div class="container">
         <div class="row">
-          <h2>Site Owner's Information</h2>
+          <h2>Intro Section Details</h2>
    <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image Titile</th>
+      <th scope="col">Image</th>
+      <th scope="col">Status</th>
+      <th scope="col"><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAddImg">Add</a></th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach ($img_info as $images)
+    <tr>
+      
+      <td>{{ $images->id }}</td>
+      <td>{{ $images->img_title }}</td>
+      <td><img style="width:100px;height:100px;" src="/storage/img_name/{{ $images->img_name }}"></td>
+      <td>
+      <form method="post" action="/updateStatus_Images/{{$images->id}}">
+        @csrf
+        @if($images->status == 1)
+        <button class="btn btn-success btn-block btn-lg rounded-0" type="submit" name="state" value= "0">Active</button>
+        @else
+        <button class="btn btn-danger btn-block btn-lg rounded-0" type="submit" name="state" value= "1">In-Active</button>
+        @endif
+        </form>
+      </td>
+      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalEditImage_{{ $images->id }}">Edit</a><a href="/deleteImagesInfo/{{$images->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
+   </tr>
+    @endforeach
+    
+           </tbody>
+          </table>
+               
+        </div>
+
+  <div class="row">
+          <h2>New & Update Section</h2>
+   <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">News Titile</th>
+      <th scope="col">Image</th>
+      <th scope="col">News Link</th>
+      <th scope="col">Status</th>
+      <th scope="col"><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAdd_news">Add</a></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    @foreach( $news_info as $news )
+    <tr>
+      <td> {{  $news->id }} </td>
+      <td>{{  $news->news_title }}</td>
+      <td>{{  $news->news_link }}</td>
+      <td><img style="width:100px;height:100px;" src="/storage/news_image/{{ $news->news_img }}"></td>
+      <td>
+      <form method="post" action="/updateNews/{{$news->id}}">
+        @csrf
+        @if($news->status == 1)
+        <button class="btn btn-success btn-block btn-lg rounded-0" type="submit" name="state" value= "0">Active</button>
+        @else
+        <button class="btn btn-danger btn-block btn-lg rounded-0" type="submit" name="state" value= "1">In-Active</button>
+        @endif
+        </form>
+
+      </td>
+      
+      <td> <a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalEdit_News{{ $news->id }}">Edit</a><a href="/deleteNewsInfo/{{$news->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
+      </tr>
+      @endforeach
+   
+           </tbody>
+          </table>
+        </div>
+
+ <div class="row">
+          <h2>Site Owner's Information</h2>
+   <table class="table table-hover table-dark" id="owners_info">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -161,7 +158,8 @@
       <th scope="col">Mobile</th>
       <th scope="col">Email</th>
       <th scope="col">Description</th>
-      <th scope="col">Action</th>
+      <th scope="col">Status</th>
+      <th scope="col"><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAdd">Add</a></th>
     </tr>
   </thead>
   <tbody>
@@ -174,7 +172,17 @@
       <td>{{ $owners->cellno }}</td>
       <td>{{ $owners->email }}</td>
       <td>{{ $owners->job_description1 }}</td>
-      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAdd">Add</a><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalEdit">Edit</a><a href="/deleteOwnerInfo/{{$owners->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
+      <td>
+      <form method="post" action="/updateStatus_owner/{{$owners->id}}">
+        @csrf
+        @if($owners->status == 1)
+        <button class="btn btn-success btn-block btn-lg rounded-0" type="submit" name="state" value= "0">Active</button>
+        @else
+        <button class="btn btn-danger btn-block btn-lg rounded-0" type="submit" name="state" value= "1">In-Active</button>
+        @endif
+        </form>
+      </td>
+      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0 modalEdit" data-toggle="modal" data-target="#modalEdit_owner_{{ $owners->id }}">Edit</a><a href="/deleteOwnerInfo/{{$owners->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
      
     </tr>
     @endforeach
@@ -185,7 +193,51 @@
         </div>
       </div>
     </div>
-
+    <div class="">
+      <div class="container">
+        <div class="row">
+          <h2>Your Projects Details</h2>
+   <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">Status</th>
+      <th scope="col"><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAddProjectDetails">Add</a></th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach ($projectDetails_info as $PDetails)
+    <tr>
+      
+      <td>{{ $PDetails->id }}</td>
+      <td>{{ $PDetails->work_category }}</td>
+      <td>{{ $PDetails->work_title }}</td>
+      <td>{{ $PDetails->work_description }}</td>
+      <td><img style="width:100px;height:100px;" src="/storage/project_img/{{ $PDetails->work_img }}"></td>
+      <td>
+      <form method="post" action="/updateStatus_PDetails/{{$PDetails->id}}">
+        @csrf
+        @if($PDetails->status == 1)
+        <button class="btn btn-success btn-block btn-lg rounded-0" type="submit" name="state" value= "0">Active</button>
+        @else
+        <button class="btn btn-danger btn-block btn-lg rounded-0" type="submit" name="state" value= "1">In-Active</button>
+        @endif
+        </form>
+      </td>
+      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalEdit_PDetails_{{$PDetails->id}}">Edit</a><a href="/deleteProjectDetailsInfo/{{$PDetails->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
+   </tr>
+    @endforeach
+    
+     </tbody>
+          </table>
+               
+        </div>
+      </div>
+    </div>
 <!-- Modal For ADD, EDIT, DELETE -->
 
 <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -237,9 +289,175 @@
     </div>
   </div>
 </div>
+<!-- Modal for News and Update -->
+<div class="modal fade" id="modalAdd_news" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add News Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/addNewsInfo" method="POST" enctype="multipart/form-data">
+           @csrf
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="news_title" placeholder="News Titile*" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="news_link" placeholder="News Link*" required>
+                  </div>
+                </div>
 
+                <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" id="news_image" name="news_image" />
+                    </div>
+                  
+                </div>            
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+      <div class="col-md-6 align-self-end">
+                    <input type="submit" name="news_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<!-- Modal for News and Update -->
+@foreach( $news_info as $news_edit )
+<div class="modal fade" id="modalEdit_News{{ $news_edit->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit News Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/editNewsInfo/{{ $news_edit->id }}" method="POST" enctype="multipart/form-data"  >
+           @csrf
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="newsEdit_title" placeholder="News Titile*" value="{{ $news_edit->news_title }}" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="newsEdit_link" placeholder="News Link*" value="{{ $news_edit->news_link }}" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" id="news_image" name="news_image" />
+                    </div>
+                  
+                </div>            
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+      <div class="col-md-6 align-self-end">
+                    <input type="submit" name="news_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endforeach
+<!-- Modal For ADD, EDIT, DELETE  for Images-->
+
+<div class="modal fade" id="modalAddImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add Intro Section Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/addImageInfo" method="POST" enctype="multipart/form-data">
+           @csrf
+           <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" id="img_name" name="img_name" />
+                    </div>
+                  
+                </div>
+
+                
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <textarea type="text" class="form-control"  name="img_title" placeholder="Image Description*" cols="30" rows="7" required> </textarea>
+                  </div>
+                 
+                </div>
+                
+             
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+      <div class="col-md-6 align-self-end">
+                    <input type="submit" name="images_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+@foreach ($img_info as $images_edit)
+<div class="modal fade" id="modalEditImage_{{ $images_edit->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Intro Section Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+     
+           <form action="/editImageInfo/{{ $images_edit->id }} " method="POST" enctype="multipart/form-data">
+           @csrf
+           <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" id="img_name" name="img_name" />
+                    </div>
+                  
+                </div>
+
+                
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <textarea type="text" class="form-control"  name="edit_img_title" placeholder="Image Description*" cols="30" rows="7" required>{{ $images_edit->img_title }} </textarea>
+                  </div>
+                 
+                </div>
+                
+             
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+      <div class="col-md-6 align-self-end">
+                    <input type="submit" name="edit_images_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+@endforeach
+@foreach ($owner_info  as $edit_owners)
+<div class="modal fade" id="modalEdit_owner_{{ $edit_owners->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -250,28 +468,29 @@
         </button>
       </div>
       <div class="modal-body mx-3">
-           <form action="#">
+           <form action="/editOwersInfo/{{ $edit_owners->id }}" method="POST">
+           @csrf
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="o_name" placeholder="Owner's Name*" required>
+                    <input type="text" class="form-control" id="o_name" name="o_name" value="{{ $edit_owners->name }}" placeholder="Owner's Name*" required>
                   </div>
                   <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="o_address" placeholder="Owner's Address*" required>
+                    <input type="text" class="form-control" id="o_address" name="o_address" value="{{ $edit_owners->address }}" placeholder="Owner's Address*" required>
                   </div>
                 </div>
 
                 <div class="row">
                 <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="o_cellno" placeholder="Owner's Phone number" maxlength="11" required>
+                    <input type="text" class="form-control" id="o_cellno" name="o_cellno" value="{{ $edit_owners->cellno }}" placeholder="Owner's Phone number" maxlength="11" required>
                   </div>
                   <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="o_email" placeholder="Owner's email*" required>
+                    <input type="text" class="form-control" id="o_email" name="o_email" value="{{ $edit_owners->email }}" placeholder="Owner's email*" required>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-12">
-                    <textarea name="" class="form-control" id="" name="0_description1" placeholder="Owner's Description*" cols="30" rows="7" required></textarea>
+                  <textarea type="text" class="form-control"  name="o_description1" placeholder="Owner's Description*" cols="30" rows="7" required>{{ $edit_owners->job_description1 }} </textarea>
                   </div>
                  
                 </div>
@@ -280,16 +499,103 @@
       </div>
       <div class="modal-footer d-flex justify-content-center">
       <div class="col-md-6 align-self-end">
-                    <input type="submit" name="owner_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                    <input type="submit" name="edit_ownerinfo_submit" class="btn btn-primary btn-block btn-lg rounded-0 ownerEdit_submit" value="Submit Information">
                   </div>
       </div>
       </form>
     </div>
   </div>
 </div>
+@endforeach
 <!-- END OF  Modal For ADD, EDIT, DELETE -->
 
+<!-- Modal For ADD, EDIT, DELETE  For Your Project Details-->
 
+<div class="modal fade" id="modalAddProjectDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add Project's Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/addProjectDetailsInfo" method="POST" enctype="multipart/form-data">
+           @csrf
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Project Category*" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Project Title*" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <textarea type="text" class="form-control"  id="description" name="description" placeholder="Project Description*" cols="30" rows="7" required> </textarea>
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" id="project_img" name="project_img" />
+                    </div>
+                </div>
+         </div>
+      <div class="modal-footer d-flex justify-content-center">
+                <div class="col-md-6 align-self-end">
+                    <input type="submit" name="details_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+@foreach ($projectDetails_info as $PDetails_edit)
+<div class="modal fade" id="modalEdit_PDetails_{{$PDetails_edit->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Project's Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/editProjectDetailsInfo/{{$PDetails_edit->id}}" method="POST" enctype="multipart/form-data">
+           @csrf
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="category" Value="{{$PDetails_edit->work_category}}" placeholder="Project Category*" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="title" Value="{{$PDetails_edit->work_title}}" placeholder="Project Title*" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <textarea type="text" class="form-control"  name="description"  placeholder="Project Description*" cols="30" rows="7" required>{{$PDetails_edit->work_description}}</textarea>
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" id="project_img" name="project_img" value="{{$PDetails_edit->work_img}}" />
+                    </div>
+                </div>
+         </div>
+      <div class="modal-footer d-flex justify-content-center">
+                <div class="col-md-6 align-self-end">
+                    <input type="submit" name="edit_details_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endforeach
     <!-- <div class="site-section block-3">
       <div class="container">
         
@@ -471,5 +777,34 @@
   
 @include('sweetalert::alert')
 </body>
+<script>
+$(document).ready(function(){
+  $(document).on('click','.modalEdit', function() {
+    var $td= $(this).closest('tr').children('td');
+    var id= $td.eq(0).text();
+    var company= $td.eq(1).text();
+    var address= $td.eq(2).text();
+    var mobile= $td.eq(3).text();
+    var email= $td.eq(4).text();
+    var description= $td.eq(5).text();
 
+
+   //console.log(dataString);
+  //  var id = id;
+  //  var c_name = $('#o_name').val(company);
+  //  var c_address = $('#o_address').val(address);
+  //  var c_cellno = $('#o_cellno').val(mobile);
+  //  var c_email = $('#o_email').val(email);
+  //  var c_description = $('#o_description1').val(description);
+  //  var rejectgrant = $(document).find('input[name="o_name"]').val();
+  //  var dataString = 'id='+id + '&company_name='+ c_name + '&company_address='+ c_address + '&mobile='+ c_cellno + '&email='+ c_email + '&description='+ c_description;
+  //  console.log(c_cellno);
+  // $(document).one('click','.ownerEdit_submit', function() { 
+  //  // var x = 
+  //  console.log(rejectgrant);
+  // });
+});
+});
+
+</script>
 </html>

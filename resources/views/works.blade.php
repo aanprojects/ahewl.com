@@ -7,25 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-  <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700|Muli:300,400" rel="stylesheet">
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/jquery-ui.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-
-  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-  <link rel="stylesheet" href="css/aos.css">
-  <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
-
-  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS Include -->
+@include('inc.css');
+<!-- -->
 
 
 
@@ -47,56 +31,9 @@
 
     
     <div class="header-top bg-light">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-6 col-lg-3">
-            <a href="index.html">
-              <img src="images/logo.png" alt="Image" class="img-fluid">
-            </a>
-          </div>
-          <div class="col-lg-3 d-none d-lg-block">
-
-            <div class="quick-contact-icons d-flex">
-              <div class="icon align-self-start">
-                <span class="flaticon-placeholder text-primary"></span>
-              </div>
-              <div class="text">
-                <span class="h4 d-block">San Francisco</span>
-                <span class="caption-text">Mountain View, Fake st., CA</span>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-lg-3 d-none d-lg-block">
-            <div class="quick-contact-icons d-flex">
-              <div class="icon align-self-start">
-                <span class="flaticon-call text-primary"></span>
-              </div>
-              <div class="text">
-                <span class="h4 d-block">000 209 392 312</span>
-                <span class="caption-text">Toll free</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 d-none d-lg-block">
-            <div class="quick-contact-icons d-flex">
-              <div class="icon align-self-start">
-                <span class="flaticon-email text-primary"></span>
-              </div>
-              <div class="text">
-                <span class="h4 d-block">info@gmail.com</span>
-                <span class="caption-text">Gournadi, 1230 Bariasl</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 d-block d-lg-none text-right">
-              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                class="icon-menu h3"></span></a>
-          </div>
-        </div>
-      </div>
+      <!-- CSS Include -->
+      @include('inc.header');
+        <!-- -->
       
 
 
@@ -107,27 +44,9 @@
         <div class="d-flex align-items-center">
           
           <div class="mr-auto">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
-                <li>
-                  <a href="index.html" class="nav-link text-left">Home</a>
-                </li>
-                <li>
-                  <a href="about.html" class="nav-link text-left">About Us</a>
-                </li>
-                <li class="active">
-                  <a href="works.html" class="nav-link text-left">Our Projects</a>
-                </li>
-                
-                <li>
-                    <a href="testimonials.html" class="nav-link text-left">Testimonials</a>
-                </li>
-                <li><a href="blog.html" class="nav-link text-left">Blog</a></li>
-                <li>
-                    <a href="contact.html" class="nav-link text-left">Contact</a>
-                  </li>
-              </ul>                                                                                                                                                                                                                                                                                          </ul>
-            </nav>
+             <!-- CSS Include -->
+             @include('inc.menu');
+             <!-- -->
 
           </div>
           
@@ -160,124 +79,80 @@
     <div class="site-section">
         <div class="container">
             <div class="row">
+            @foreach($show_projectDetails as $pdetails)
                 <div class="col-md-6 col-lg-3 mb-4">
                     <div class="project-item">
                         <div class="project-item-contents">
                             <a href="project-single.html">
-                            <span class="project-item-category">Factory</span>
+                            <span class="project-item-category">{{ $pdetails->work_category }}</span>
                             <h2 class="project-item-title">
-                                Building Refinery 
+                            {{ $pdetails->work_title }}
                             </h2>
                             </a>
                         </div>
-                        <img src="images/works_1.jpg" alt="Image" class="img-fluid">
+                        <img src="/storage/project_img/{{ $pdetails->work_img }}" alt="Image" class="img-fluid">
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="project-item">
-                        <div class="project-item-contents">
-                            <a href="project-single.html">
-                            <span class="project-item-category">Factory</span>
-                            <h2 class="project-item-title">
-                                Building Refinery 
-                            </h2>
-                            </a>
-                        </div>
-                        <img src="images/works_2.jpg" alt="Image" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="project-item">
-                        <div class="project-item-contents">
-                            <a href="project-single.html">
-                            <span class="project-item-category">Factory</span>
-                            <h2 class="project-item-title">
-                                Building Refinery 
-                            </h2>
-                            </a>
-                        </div>
-                        <img src="images/works_3.jpg" alt="Image" class="img-fluid">
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="project-item">
-                        <div class="project-item-contents">
-                            <a href="project-single.html">
-                            <span class="project-item-category">Factory</span>
-                            <h2 class="project-item-title">
-                                Building Refinery 
-                            </h2>
-                            </a>
-                        </div>
-                        <img src="images/works_4.jpg" alt="Image" class="img-fluid">
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="project-item">
-                        <div class="project-item-contents">
-                            <a href="project-single.html">
-                            <span class="project-item-category">Factory</span>
-                            <h2 class="project-item-title">
-                                Building Refinery 
-                            </h2>
-                            </a>
-                        </div>
-                        <img src="images/works_3.jpg" alt="Image" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="project-item">
-                        <div class="project-item-contents">
-                            <a href="project-single.html">
-                            <span class="project-item-category">Factory</span>
-                            <h2 class="project-item-title">
-                                Building Refinery 
-                            </h2>
-                            </a>
-                        </div>
-                        <img src="images/works_4.jpg" alt="Image" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="project-item">
-                        <div class="project-item-contents">
-                            <a href="project-single.html">
-                            <span class="project-item-category">Factory</span>
-                            <h2 class="project-item-title">
-                                Building Refinery 
-                            </h2>
-                            </a>
-                        </div>
-                        <img src="images/works_3.jpg" alt="Image" class="img-fluid">
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="project-item">
-                        <div class="project-item-contents">
-                            <a href="project-single.html">
-                            <span class="project-item-category">Factory</span>
-                            <h2 class="project-item-title">
-                                Building Refinery 
-                            </h2>
-                            </a>
-                        </div>
-                        <img src="images/works_2.jpg" alt="Image" class="img-fluid">
-                    </div>
-                </div>
+                  </div>
+                @endforeach
+                
+                
             </div>
         </div>
     </div>
     
+    <div class="site-section bg-light">
+      <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 mb-5 text-left">
+        <h3 class="section-subtitle">We're Collaborating With Renowned National And International Companies</h3>
+        <h2 class="section-title text-black mb-4">Current Projects</h2>
+      </div>
+</div>
+    <div class="">
+      <div class="container">
+          @foreach($company as $p_info)
+          <h2 style="text-align:left;">{{ $p_info->c_name }}</h2>
+         
+          <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Project Name</th>
+                <th scope="col">Conract Ref. No.</th>
+                <th scope="col">Date of Contract</th>
+                <th scope="col">Name of Work</th>
+                <th scope="col">Contract Value (BDT.)</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($project_info as $info)
+              @if ($p_info->id == $info->fk_cid)
+              <tr>
+                <td>{{ $info->id }}</td>
+                <td>{{ $info->p_name }}</td>
+                <td>{{ $info->p_contract_ref }}</td>
+                <td>{{ $info->p_dateofcontract }}</td>
+                <td>{{ $info->p_nameofwork }}</td>
+                <td>{{ number_format($info->p_contract_value, 2) }}</td>
 
+              </tr>
+              @endif
+              @endforeach
+                     </tbody>
+                    </table>
+   
+          @endforeach
+        
+      </div>
+    </div>   
+  </div>
+</div>  
             
             
     
     <div class="py-5 bg-primary block-4">
       <div class="container">
-        <div class="row align-items-center">
+        <!-- <div class="row align-items-center">
           <div class="col-lg-6">
             <h3 class="text-white">Subscribe To Newsletter</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, reprehenderit!</p>
@@ -288,61 +163,14 @@
               <input type="submit" class="btn btn-secondary px-4" value="Subcribe">
             </form>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
     <div class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-            <p class="mb-4"><img src="images/logo2.png" alt="Image" class="img-fluid"></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>  
-            <p><a href="#">Learn More</a></p>
-          </div>
-          <div class="col-lg-3">
-            <h3 class="footer-heading"><span>Our Company</span></h3>
-            <ul class="list-unstyled">
-                <li><a href="#">About</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Projects</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Our Services</span></h3>
-              <ul class="list-unstyled">
-                  <li><a href="#">Industrial</a></li>
-                  <li><a href="#">Construction</a></li>
-                  <li><a href="#">Remodeling</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Contact</span></h3>
-              <ul class="list-unstyled">
-                  <li><a href="#">Help Center</a></li>
-                  <li><a href="#">Support Community</a></li>
-                  <li><a href="#">Press</a></li>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Our Partners</a></li>
-              </ul>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-            <div class="copyright">
-                <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-            </div>
-          </div>
-        </div>
-      </div>
+       <!-- CSS Include -->
+       @include('inc.footer');
+      <!-- -->
     </div>
     
 
@@ -353,25 +181,12 @@
   <!-- loader -->
   <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.fancybox.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/jquery.mb.YTPlayer.min.js"></script>
 
-
-
-
-  <script src="js/main.js"></script>
+<!-- CSS Include -->
+@include('inc.js')
+<!-- -->
+  
+@include('sweetalert::alert')
 
 </body>
 

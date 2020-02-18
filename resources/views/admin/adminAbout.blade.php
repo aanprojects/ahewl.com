@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
-  <title>AHEW LTD. - Admin Projects</title>
+  <title>AHEW LTD. - Admin AboutUS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- CSS Include -->
-@include('inc.css');
+@include('inc.css')
 <!-- -->
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -29,7 +30,7 @@
     <div class="header-top bg-light">
   
       <!-- CSS Include -->
-      @include('inc.header');
+      @include('inc.header')
         <!-- -->
 
 
@@ -89,11 +90,9 @@
           </div>
         </div>
         
-      </div> 
-      
-      END services -->
+      </div> -->
     </div>
-     
+    <!-- END services -->
 
    <!--  <div class="site-section">
       <div class="block-2">
@@ -145,29 +144,51 @@
 
     <div class="">
       <div class="container">
-      <div class="row">
-          <h2>Company's Information</h2>
+      <h2 style="text-align:left;">Company's Team Information</h2>      {{ Auth::user()->name }}
+
+
+        <div class="row table-responsive">
    <table class="table table-hover table-dark">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Company Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Logo</th>
-      <th scope="col"><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAdd">Add</a></th>
+      <th scope="col">Name</th>
+      <th scope="col">Title</th>
+      <th scope="col">Message</th>
+      <th scope="col">FaceBook</th>
+      <th scope="col">Twitter</th>
+      <th scope="col">LinkedIn</th>
+      <th scope="col">photo</th>
+      <th scope="col">Status</th>
+      <th scope="col"><a href=""  class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAdd">Add</a></th>
     </tr>
   </thead>
   <tbody>
-  @foreach($company_info as $c_info)
+  @foreach ($team_info as $teams)
     <tr>
-      <td>{{ $c_info-> id }}</td>
-      <td>{{ $c_info-> c_name }}</td>
-      <td>{{ $c_info-> c_description }}</td>
-      <td><img style="width:100px;height:100px;" src="/storage/c_logo/{{ $c_info->c_logo }}"></td>
-      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modaleditCompany_{{ $c_info-> id }}">Edit</a><a href="/deleteCompanyInfo/{{$c_info->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
+      
+      <td>{{ $teams->id }}</td>
+      <td>{{ $teams->member_name }}</td>
+      <td>{{ $teams->member_title }}</td>
+      <td>{{ $teams->messages }}</td>
+      <td>{{ $teams->fb_link }}</td>
+      <td>{{ $teams->twitter_link }}</td>
+      <td>{{ $teams->linkedin_link }}</td>
+      <td><img style="width:100px;height:100px;" src="/storage/team_img/{{ $teams->member_img }}"></td>
+      <td>
+      <form method="post" action="/updateStatus_team/{{$teams->id}}">
+        @csrf
+        @if($teams->status == 1)
+        <button class="btn btn-success btn-block btn-lg rounded-0" type="submit" name="state" value= "0">Active</button>
+        @else
+        <button class="btn btn-danger btn-block btn-lg rounded-0" type="submit" name="state" value= "1">In-Active</button>
+        @endif
+        </form>
+      </td>
+      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalEdit_team{{ $teams->id }}">Edit</a><a href="/deleteTeamInfo/{{$teams->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
      
     </tr>
-  @endforeach
+    @endforeach
     
            </tbody>
           </table>
@@ -175,38 +196,31 @@
         </div>
       </div>
     </div>
-
     <div class="">
       <div class="container">
-      <div class="row">
-          <h2>Project's Information</h2>
+      <h2 style="text-align:left;">Company's Manpower Information</h2>
+
+        <div class="row table-responsive">
    <table class="table table-hover table-dark">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <!-- <th scope="col">Company Name</th> -->
-      <th scope="col">Project Name</th>
-      <th scope="col">Conract Ref. No.</th>
-      <th scope="col">Date of Contract</th>
-      <th scope="col">Name of Work</th>
-      <th scope="col">Contract Value</th>
-      <th scope="col"><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAddProject">Add</a></th>
+      <th scope="col">Designtion</th>
+      <th scope="col">Quantity</th>
+      <th scope="col"><a href=""  class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAdd_mnpower">Add</a></th>
     </tr>
   </thead>
   <tbody>
-  @foreach($project_info as $p_info)
+  @foreach ($mnList as $manpower)
     <tr>
-      <td>{{ $p_info->id }}</td>
-      <!-- <td>{{ $p_info->fk_cid }}</td> -->
-      <td>{{ $p_info->p_name }}</td>
-      <td>{{ $p_info->p_contract_ref }}</td>
-      <td>{{ $p_info->p_dateofcontract }}</td>
-      <td>{{ $p_info->p_nameofwork }}</td>
-      <td>{{ $p_info->p_contract_value }}</td>
-      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalEditProject_{{ $p_info->id }}">Edit</a><a href="/deleteProjectInfo/{{$p_info->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
+      
+      <td>{{ $manpower->id }}</td>
+      <td>{{ $manpower->designation }}</td>
+      <td>{{ $manpower->quantity }}</td>
+      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalEdit_manpower{{ $manpower->id }}">Edit</a><a href="/deleteManpowerInfo/{{$manpower->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
      
     </tr>
-  @endforeach
+    @endforeach
     
            </tbody>
           </table>
@@ -214,7 +228,38 @@
         </div>
       </div>
     </div>
+    <div class="">
+      <div class="container">
+      <h2 style="text-align:left;">Company's Equipment Information</h2>
 
+        <div class="row table-responsive">
+   <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tools Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col"><a href=""  class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalAdd_equipList">Add</a></th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach ($eqList as $equipment)
+    <tr>
+      
+      <td>{{ $equipment->id }}</td>
+      <td>{{ $equipment->equip_name }}</td>
+      <td>{{ $equipment->quantity }}</td>
+      <td><a href="" class="btn btn-primary btn-block btn-lg rounded-0" data-toggle="modal" data-target="#modalEdit_eqpList{{ $equipment->id }}">Edit</a><a href="/deleteEquipmentInfo/{{$equipment->id}}" class="btn btn-primary btn-block btn-lg rounded-0">Delete</a></td>
+     
+    </tr>
+    @endforeach
+    
+           </tbody>
+          </table>
+               
+        </div>
+      </div>
+    </div>
 <!-- Modal For ADD, EDIT, DELETE -->
 
 <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -222,127 +267,48 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Add Company Information</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Add Company's Team Information</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body mx-3">
-           <form action="/addCompanyInfo"  method="POST" enctype="multipart/form-data">
+           <form action="/addTeamInfo" method="POST" enctype="multipart/form-data">
            @csrf
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="c_name" placeholder="Company Name*" required>
+                    <input type="text" class="form-control" name="team_name" placeholder="Member Name*" required>
                   </div>
                   <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="c_description" placeholder="Company  Description*" required>
+                    <input type="text" class="form-control" name="team_title" placeholder="Member Title*" required>
                   </div>
-                  
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="team_fb" placeholder="FaceBook Link*" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="team_twitter" placeholder="Twitter Link*" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="team_linkedin" placeholder="LinkedIn Link*" required>
+                  </div>
                 </div>
-
-            
-                <div class="col-md-12">
-                  <input type="file" class="form-control" id="c_image" name="c_image" />
-                    </div>           
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-      <div class="col-md-6 align-self-end">
-                    <input type="submit" name="company_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
-                  </div>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-@foreach($company_info as $edit_cinfo)
-<div class="modal fade" id="modaleditCompany_{{ $edit_cinfo-> id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Edit Company Information</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-           <form action="/editCompanyInfo/{{ $edit_cinfo->id }}"  method="POST" enctype="multipart/form-data">
-           @csrf
                 <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="c_name_edit" placeholder="Company Name*" value="{{ $edit_cinfo->c_name }}" required>
+                  <div class="col-md-12 form-group">
+                    <textarea type="text" class="form-control"  name="team_messages" placeholder="Member Messages*" cols="30" rows="7" required> </textarea>
                   </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="c_description_edit" placeholder="Company  Description*" value="{{ $edit_cinfo->c_description }}" required>
-                  </div>
-                  
+                 
                 </div>
-
-            
-                <div class="col-md-12">
-                  <input type="file" class="form-control" id="c_image" name="c_image" />
-                    </div>           
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-      <div class="col-md-6 align-self-end">
-                    <input type="submit" name="company__edit_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
-                  </div>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-@endforeach
-<!--  -->
-<div class="modal fade" id="modalAddProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Add Project Information</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-           <form action="/addProjectInfo"  method="POST" enctype="multipart/form-data">
-           @csrf
                 <div class="row">
-                  <div class="col-md-6 form-group">
-                  <select class="form-control" name="fk_id">
-                  @foreach($company_info as $project_company)
-                      <option value="{{ $project_company->id }}">{{ $project_company->c_name }}</option>
-                      @endforeach
-                    </select>                   
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" id="team_img" name="team_img" />
                     </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="p_name" placeholder="Project Name*" required>
-                  </div>
-                  
                 </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="p_ref" placeholder="Ref. No*" required>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="date" class="form-control" name="p_doc" placeholder="Date of Contract*" required>
-                  </div>
-                  
-                </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="p_nameOfWork" placeholder="Name Of Work*" required>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="number" class="form-control" name="p_contractValue" placeholder="Contract Value*" required>
-                  </div>
-                  
-                </div>
-
+                
+             
       </div>
       <div class="modal-footer d-flex justify-content-center">
       <div class="col-md-6 align-self-end">
-                    <input type="submit" name="company_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                    <input type="submit" name="team_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
                   </div>
       </div>
       </form>
@@ -350,8 +316,8 @@
   </div>
 </div>
 
-@foreach($project_info as $p_editInfo)
-<div class="modal fade" id="modalEditProject_{{ $p_editInfo->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+@foreach($team_info as $tinfo)
+<div class="modal fade" id="modalEdit_team{{ $tinfo->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -362,44 +328,41 @@
         </button>
       </div>
       <div class="modal-body mx-3">
-      <form action="/editProjectInfo/{{ $p_editInfo->id }}"  method="POST" enctype="multipart/form-data">
-           @csrf
-                <div class="row">
+      <form action="/editTeamInfo/{{ $tinfo->id }}" method="POST" enctype="multipart/form-data">
+      @csrf
+           <div class="row">
                   <div class="col-md-6 form-group">
-                  <select class="form-control" name="fk_id">
-                  @foreach($company_info as $project_company)
-                      <option value="{{ $project_company->id }}" >{{ $project_company->c_name }}</option>
-                   @endforeach
-                    </select>                   
+                    <input type="text" class="form-control" name="teamEdit_name" placeholder="Member Name*" value="{{ $tinfo->member_name }}" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="teamEdit_title" placeholder="Member Title*" value="{{ $tinfo->member_title }}" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="teamEdit_fb" placeholder="FaceBook Link*" value="{{ $tinfo->fb_link }}" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="teamEdit_twitter" placeholder="Twitter Link*" value="{{ $tinfo->twitter_link }}" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="teamEdit_linkedin" placeholder="LinkedIn Link*" value="{{ $tinfo->linkedin_link }}" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <textarea type="text" class="form-control"  name="teamEdit_messages" placeholder="Member Messages*" cols="30" rows="7" required>{{ $tinfo->messages }} </textarea>
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" id="team_img" name="team_img" />
                     </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="pedit_name" placeholder="Project Name*" value="{{ $p_editInfo->p_name }}" required>
-                  </div>
-                  
                 </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="pedit_ref" placeholder="Ref. No*" value="{{ $p_editInfo->p_contract_ref }}" required>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="date" class="form-control" name="pedit_doc" placeholder="Date of Contract*" value="{{ $p_editInfo->p_dateofcontract }}" required>
-                  </div>
-                  
-                </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="pedit_nameOfWork" placeholder="Name Of Work*" value="{{ $p_editInfo->p_nameofwork }}" required>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="number" class="form-control" name="pedit_contractValue" placeholder="Contract Value*" value="{{ $p_editInfo->p_contract_value }}" required>
-                  </div>
-                  
-                </div>
-
+                
+             
       </div>
       <div class="modal-footer d-flex justify-content-center">
       <div class="col-md-6 align-self-end">
-                    <input type="submit" name="company_edit_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                    <input type="submit" name="teamEdit_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
                   </div>
       </div>
       </form>
@@ -409,7 +372,139 @@
 @endforeach
 <!-- END OF  Modal For ADD, EDIT, DELETE -->
 
+<div class="modal fade" id="modalAdd_mnpower" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add Manpower Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/addManpowerInfo" method="POST" enctype="multipart/form-data">
+           @csrf
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="mn_designation" placeholder="Designation*" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="number" class="form-control" name="mn_quantity" placeholder="Quanity*" required>
+                  </div>
+                </div>
+                
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+      <div class="col-md-6 align-self-end">
+                    <input type="submit" name="mnpower_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+ @foreach($mnList as $manpower)
+ <div class="modal fade" id="modalEdit_manpower{{ $manpower->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Manpower Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/editManpowerInfo/{{ $manpower->id }}" method="POST" enctype="multipart/form-data">
+           @csrf
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="mnEdit_designation" placeholder="Designation*" value="{{ $manpower->designation }}" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="number" class="form-control" name="mnEdit_quantity" placeholder="Quanity*" value="{{ $manpower->quantity }}" required>
+                  </div>
+                </div>
+                
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+      <div class="col-md-6 align-self-end">
+                    <input type="submit" name="mnpowerEdit_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+ @endforeach
 
+ <div class="modal fade" id="modalAdd_equipList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add Equipment Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/addEquipmentInfo" method="POST" enctype="multipart/form-data">
+           @csrf
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="eq_name" placeholder="Name*" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="number" class="form-control" name="eq_quantity" placeholder="Quanity*" required>
+                  </div>
+                </div>
+                
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+      <div class="col-md-6 align-self-end">
+                    <input type="submit" name="eqp_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+ @foreach($eqList as $eqpList)
+ <div class="modal fade" id="modalEdit_eqpList{{ $eqpList->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Equipment Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <form action="/editEquipmentInfo/{{ $eqpList->id }}" method="POST" enctype="multipart/form-data">
+           @csrf
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" class="form-control" name="eEdit_equipName" placeholder="Name*" value="{{ $eqpList->equip_name }}" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input type="number" class="form-control" name="eEdit_quantity" placeholder="Quanity*" value="{{ $eqpList->quantity }}" required>
+                  </div>
+                </div>
+                
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+      <div class="col-md-6 align-self-end">
+                    <input type="submit" name="eqpEdit_submit" class="btn btn-primary btn-block btn-lg rounded-0" value="Submit Information">
+                  </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+ @endforeach
     <!-- <div class="site-section block-3">
       <div class="container">
         
